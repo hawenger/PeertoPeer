@@ -1,30 +1,29 @@
 function hasUserMedia() {
-  navigator.getUserMedia =
+  //check if the browser supports the WebRTC
+  return !!(
     navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia ||
-    navigator.msGetUserMedia;
-  return !!navigator.getUserMedia;
+    navigator.mozGetUserMedia
+  );
 }
 
 if (hasUserMedia()) {
   navigator.getUserMedia =
     navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
-    navigator.mozGetUserMedia ||
-    navigator.msGetUserMedia;
+    navigator.mozGetUserMedia;
 
-  //get both video and audio streams from user's camera
+  //enabling video and audio channels
   navigator.getUserMedia(
     { video: true, audio: true },
     function (stream) {
       var video = document.querySelector("video");
 
-      //insert stream into the video tag
+      //inserting our stream to the video tag
       video.src = window.URL.createObjectURL(stream);
     },
     function (err) {}
   );
 } else {
-  alert("Error. WebRTC is not supported!");
+  alert("WebRTC is not supported");
 }

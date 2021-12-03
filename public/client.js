@@ -22,6 +22,8 @@ if (hasUserMedia()) {
       //inserting our stream to the video tag
       //createObjectURL is deprecated
       //video.src = window.URL.createObjectURL(stream);
+
+      //replacement for createObjectURL
       video.srcObject = stream;
     },
     function (err) {}

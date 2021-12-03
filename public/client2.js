@@ -1,5 +1,5 @@
 let connection = new WebSocket("ws://localhost:9090");
-let name = "";
+let username = "";
 
 let loginInput = document.querySelector("#loginInput");
 let loginBtn = document.querySelector("#loginBtn");
@@ -8,12 +8,12 @@ let connectToOtherUsernameBtn = document.querySelector("#otherUsernameInput");
 let connectedUser, myConnection;
 
 loginBtn.addEventListener("click", function (event) {
-  name = loginInput.value;
+  username = loginInput.value;
 
-  if (name.length > 0) {
+  if (username.length > 0) {
     send({
       type: "login",
-      name: name,
+      username: username,
     });
   }
 });
